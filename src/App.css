@@ -29,3 +29,8 @@ li button {
   overflow-y: auto;
   height: 600px;
 }
+
+.logout{
+  position: absolute;
+  float: right;
+}

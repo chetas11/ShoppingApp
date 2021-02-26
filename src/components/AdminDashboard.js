@@ -19,12 +19,22 @@ function AdminDashboard(props) {
         }
     },[])
 
+
+    function loggedOut(){
+        history.push("/admin")
+    }
+
     
     
     return (
-        <div className="container mt-3 text-center ">
+        
+        <div className="container mt-3">
+            <Button onClick={loggedOut} className="logout" variant="contained" color="secondary">
+                Logout
+            </Button>
             <h1>Welcome to Admin dashboard</h1>
-            <table class="table mt-5 table-striped table-hover">
+            <hr />
+            <table class="text-center table mt-5 table-striped table-hover">
             <thead>
                 <tr>
                 <th scope="col">#</th>

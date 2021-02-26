@@ -16,7 +16,7 @@ function Product(props) {
     let URL = "https://fakestoreapi.com/products"
 
   
-    function GetProducts(){
+    useEffect(()=>{
         try{
             Axios.get(URL)
             .then((res) => {
@@ -25,21 +25,43 @@ function Product(props) {
         }catch (error) {
             console.error(error);
         }
-    }
+    
+    }, [])
+        
 
-    GetProducts()
-
+    
     if(props.category === "Elec"){
-        URL = "https://cors-anywhere.herokuapp.com/https://fakestoreapi.com/products/jewelery"
-        console.log(props.category)
-        GetProducts()
+        try{
+            Axios.get("https://fakestoreapi.com/products/category/electronics")
+            .then((res) => {
+                setData(res.data)
+            })
+        }catch (error) {
+            console.error(error);
+        }
     }
 
-    
+    if(props.category === "jewelery"){
+        try{
+            Axios.get("https://fakestoreapi.com/products/category/jewelery")
+            .then((res) => {
+                setData(res.data)
+            })
+        }catch (error) {
+            console.error(error);
+        }
+    }
 
-
-    
-    
+    if(props.category === "All"){
+        try{
+            Axios.get("https://fakestoreapi.com/products")
+            .then((res) => {
+                setData(res.data)
+            })
+        }catch (error) {
+            console.error(error);
+        }
+    }
 
     return(
         <>

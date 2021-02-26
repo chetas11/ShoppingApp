@@ -14,13 +14,10 @@ function Home() {
     function handleClickElec(){
         setCategory("Elec")
     }
+ 
 
-    function handleClickMen(){
-        setCategory("men")
-    }
-
-    function handleClickWomen(){
-        setCategory("women")
+    function handleClickJewel(){
+        setCategory("jewelery")
     }
 
 
@@ -38,8 +35,7 @@ function Home() {
                 <ul>
                 <li><button onClick={handleClickAll}>ALL</button></li>
                 <li><button onClick={handleClickElec}>Electronics</button></li>
-                <li><button onClick={handleClickMen}>Men Clothing</button></li>
-                <li><button onClick={handleClickWomen}>Women Clothing</button></li>
+                <li><button onClick={handleClickJewel}>Jewelery</button></li>
                 </ul>
                 </div>
             </div>
