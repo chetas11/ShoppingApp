@@ -9,13 +9,13 @@ import Home from './components/Home'
 
 function App() {
 
-  const [userData, setData] = useState()
+  const [userData, setData] = useState()      // sending props to get the particular user data
 
   const getFullDetails = (obj)=>{
     setData(obj)
   }
 
-  return (
+  return (                                    //all routes
     <>
       <Router>
         <Switch>

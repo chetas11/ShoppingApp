@@ -12,8 +12,9 @@ export default function Login() {
        const [user, setUser] = useState({email:"",password:""})
        const history = useHistory();
      
-       
-    function notify() {
+    // for notification
+
+    function notify() {     
       toast.error('Wrong username or password', { position: toast.POSITION.TOP_CENTER, autoClose:2000 })
     }
 
@@ -34,8 +35,9 @@ export default function Login() {
     }
 
     const handleLogin = ()=>{
+        //using environment variable to for validation
         if(user.email === process.env.REACT_APP_ADMINMAIL && user.password === process.env.REACT_APP_ADMINPASSWORD){
-            history.push("/dashboard")
+          history.push("/dashboard")
         }else{
             notify()
         }

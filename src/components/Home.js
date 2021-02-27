@@ -5,7 +5,7 @@ import Product from './Product'
 
 function Home() {
 
-    const [category, setCategory] = useState("")
+    const [category, setCategory] = useState("")            //to get the selected category
 
     function handleClickAll(){
         setCategory("All")
@@ -40,7 +40,7 @@ function Home() {
                 </div>
             </div>
             <div className="col-lg-10 col-md-10 col-sm-6 mt-5">
-                <Product category={category}  />
+                <Product category={category}  />                           
             </div>
         </div>
     </>

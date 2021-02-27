@@ -11,10 +11,10 @@ function AdminDashboard(props) {
     const history = useHistory();
     const [loader, showLoader, hideLoader] = useLoader();
 
-    useEffect(()=>{
+    useEffect(()=>{                                                    
         showLoader()
         try{
-            Axios.get("https://randomuser.me/api/?results=50")
+            Axios.get("https://randomuser.me/api/?results=50")   //fetching results for 50 users
             .then((res) => {
                 setData(res.data.results)
                 hideLoader()
@@ -52,15 +52,15 @@ function AdminDashboard(props) {
                 </tr>
             </thead>
             <tbody>
-                { data.map((user, tabIndex)=> {
-                    const handleClick = ()=>{
+                { data.map((user, tabIndex)=> {                             // map method to iterate over the data 
+                    const handleClick = ()=>{                               // displaying data in table 
                         props.getFullDetails(data[tabIndex])
                         history.push("/user-detail")
                     }
                     
                    return(
                 <tr>
-                <th scope="row" key={tabIndex}>{tabIndex+1}</th>
+                <th scope="row" key={tabIndex}>{tabIndex+1}</th>            
                 <td>{user.name.first}</td>
                 <td>{user.name.last}</td>
                 <td>{user.location.street.number}, {user.location.city}, {user.location.country}, {user.location.postcode}</td>

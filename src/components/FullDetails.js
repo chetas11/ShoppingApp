@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
     
-export default function FullDetails(props) {
+export default function FullDetails(props) {        //props from the dashboard component
     const history = useHistory();
 
     function backToUsers(){
@@ -11,7 +11,7 @@ export default function FullDetails(props) {
 
     return (
         <div className="container mt-5">
-        <h1 className="text-center">User Information</h1>
+        <h1 className="text-center">User Information</h1>      
         <hr />
         <div className="row">
             <div className="col-lg-5 col-md-4 col-sm-6">

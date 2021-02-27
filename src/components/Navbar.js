@@ -37,7 +37,7 @@ export default function Navbar() {
           <Link to="/admin">
             <Button>login</Button>
           </Link>
-          <Link to="/cart"><Button>Cart <ShoppingCartIcon /></Button></Link>
+          <Link to="/"><Button>Cart <ShoppingCartIcon /></Button></Link>
         </Toolbar>
       </AppBar> 
     </div>
