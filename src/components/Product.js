@@ -93,13 +93,13 @@ function Product(props) {
                 return(
             <div className="col-lg-4 col-md-4 col-sm-6">
                 <div className="card" key={tabIndex} >
-                <img src={item.image} height="300px" className="card-img-top" alt="..."></img>
+                <img src={item.image} height="320px" className="card-img-top" alt="..."></img>
                 <div className="card-body">
                     <h5 className="card-title text-center ">{item.title}</h5 >
-                    <p className="card-text">{item.description}</p>
+                    <p className="card-text card-desc">{item.description}</p>
                     <p className="card-text"><strong>${item.price}</strong>
                     <IconButton color="primary" aria-label="add to shopping cart">
-                        <AddShoppingCartIcon onClick={handleClick} />
+                        <AddShoppingCartIcon className="cart" onClick={handleClick} />
                     </IconButton>
                     </p>
                 </div>
