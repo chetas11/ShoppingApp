@@ -3,24 +3,31 @@ import Axios from 'axios'
 import InputField from './SearchComponent'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
+import useLoader from './useLoader';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure()
+
 
 function Product(props) {
 
     const [data, setData] = useState([])
     const [searchText, setSearchText] = useState("");
+    const [loader, showLoader, hideLoader] = useLoader();
 
     const onInputChnage = (e) =>{
     setSearchText(e.target.value)
     }
 
-    let URL = "https://fakestoreapi.com/products"
 
   
     useEffect(()=>{
+        showLoader()
         try{
-            Axios.get(URL)
+            Axios.get("https://fakestoreapi.com/products")
             .then((res) => {
                 setData(res.data)
+                hideLoader()
             })
         }catch (error) {
             console.error(error);
@@ -63,30 +70,38 @@ function Product(props) {
         }
     }
 
+    function confirmationLink() {
+      toast.success('Added Successfully, Check your cart'
+      , { position: toast.POSITION.TOP_CENTER, autoClose:2000 })
+    }
+
     return(
         <>
         <InputField onInputChnage={onInputChnage} value={searchText}/>
         <div className="row mt-5 card-container">
-            {data.filter((item) => {
+            {
+            data.filter((item,tabIndex) => {
               if(searchText===""){
                 return item
               }else if(item.title.toLowerCase().includes(searchText.toLowerCase())){
                 return item
               }
-            }).map((item) => {
+            }).map((item, tabIndex) => {
+                const handleClick = ()=>{
+                confirmationLink()
+            }
                 return(
             <div className="col-lg-4 col-md-4 col-sm-6">
-                <div className="card" >
+                <div className="card" key={tabIndex} >
                 <img src={item.image} height="300px" className="card-img-top" alt="..."></img>
                 <div className="card-body">
                     <h5 className="card-title text-center ">{item.title}</h5 >
                     <p className="card-text">{item.description}</p>
                     <p className="card-text"><strong>${item.price}</strong>
                     <IconButton color="primary" aria-label="add to shopping cart">
-                        <AddShoppingCartIcon />
+                        <AddShoppingCartIcon onClick={handleClick} />
                     </IconButton>
                     </p>
-                    
                 </div>
             </div>
             </div>
@@ -94,6 +109,7 @@ function Product(props) {
         })}
         
         </div>
+        {loader}
         </>
     )
 }

@@ -11,12 +11,14 @@ export default function FullDetails(props) {
 
     return (
         <div className="container mt-5">
+        <h1 className="text-center">User Information</h1>
+        <hr />
         <div className="row">
             <div className="col-lg-5 col-md-4 col-sm-6">
                 <img src={props.userData.picture.large} className="img-fluid profile" alt="fooditem"></img><br /><br />
             </div>
             <div className="col-lg-7 col-md-8 col-sm-6">
-                <h1>{props.userData.name.title}. {props.userData.name.first} {props.userData.name.last}</h1>
+                <h1 className="fullname">{props.userData.name.title}. {props.userData.name.first} {props.userData.name.last}</h1>
                 <p>Username: {props.userData.login.username}</p>
                 <p>Email: {props.userData.email}</p>
                 <p>Cell: {props.userData.cell}</p>
@@ -34,6 +36,7 @@ export default function FullDetails(props) {
                 </Button>
             </div>
         </div>
+        <hr />
         </div>
     )
 }

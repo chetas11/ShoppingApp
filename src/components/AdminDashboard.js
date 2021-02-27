@@ -2,17 +2,22 @@ import React, {useState, useEffect} from 'react'
 import Axios from 'axios'
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import useLoader from './useLoader';
 
 
 
 function AdminDashboard(props) {
     const [data, setData] = useState([])
     const history = useHistory();
+    const [loader, showLoader, hideLoader] = useLoader();
+
     useEffect(()=>{
+        showLoader()
         try{
             Axios.get("https://randomuser.me/api/?results=50")
             .then((res) => {
                 setData(res.data.results)
+                hideLoader()
             })
         }catch (error) {
             console.error(error);
@@ -34,7 +39,8 @@ function AdminDashboard(props) {
             </Button>
             <h1>Welcome to Admin dashboard</h1>
             <hr />
-            <table class="text-center table mt-5 table-striped table-hover">
+            <div className="table-responsive">
+            <table class="text-center table mt-5 table-striped  table-hover">
             <thead>
                 <tr>
                 <th scope="col">#</th>
@@ -54,7 +60,7 @@ function AdminDashboard(props) {
                     
                    return(
                 <tr>
-                <th scope="row">{tabIndex+1}</th>
+                <th scope="row" key={tabIndex}>{tabIndex+1}</th>
                 <td>{user.name.first}</td>
                 <td>{user.name.last}</td>
                 <td>{user.location.street.number}, {user.location.city}, {user.location.country}, {user.location.postcode}</td>
@@ -69,6 +75,8 @@ function AdminDashboard(props) {
                 })}
             </tbody>
             </table>
+            </div>
+            {loader}
         </div>
     )
 }

@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar color="transparent" position="static">
+      <AppBar color="default" position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <LocalMallIcon /> <span className="hide">Shopping App </span>
